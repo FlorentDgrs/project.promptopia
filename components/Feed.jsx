@@ -35,6 +35,12 @@ const Feed = () => {
 
   useEffect(() => {
     fetchPosts();
+
+    const interval = setInterval(() => {
+      fetchPosts();
+    }, 5000); // Refresh every 5 seconds
+
+    return () => clearInterval(interval);
   }, []);
 
   const filterPrompts = (searchtext) => {
